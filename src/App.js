@@ -1,13 +1,14 @@
-
+import React from 'react';
 import { Typography } from '@mui/material';
-import './App.css';
+import Navbar from './components/Navbar';
+import { BrowserRouter } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <Typography component={'h1'}>Hello world</Typography>
-    </div>
-  );
+
+export default function App() {
+    return (
+        <BrowserRouter>
+            <Navbar />
+            <Typography component={'h1'}>Hello world</Typography>
+        </BrowserRouter>
+    );
 }
-
-export default App;
