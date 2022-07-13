@@ -8,6 +8,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import { Typography } from '@mui/material';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
 
@@ -19,19 +20,26 @@ const Navbar = () => {
         },
         {
             text: 'Add Product',
-            path: '/'
+            path: '/add'
         },
         {
             text: 'Update Product',
-            path: '/'
+            path: '/update'
         },
         {
             text: 'Profile',
-            path: '/'
+            path: '/profile'
         }
     ]
 
 
+    const location = useLocation()
+
+    const logi = () => {
+        let l = location.pathname
+        l = '/login' ? 'logout' : 'login'
+        return l
+    }
 
 
     return (
@@ -43,16 +51,18 @@ const Navbar = () => {
                 <Box sx={{ display: 'flex', flexGrow: 1 }}>
                     <List sx={{ display: 'flex', flexDirection: 'row' }} disablePadding>
                         {navitems.map(e => (
-                            <ListItemButton key={e.text}>
-                                <ListItem >
-                                    <ListItemText primary={e.text} />
-                                </ListItem>
-                            </ListItemButton>
+                            <Link to={e.path} key={e.text} style={{ textDecoration: 'none', color: '#fff' }}>
+                                <ListItemButton >
+                                    <ListItem >
+                                        <ListItemText primary={e.text} />
+                                    </ListItem>
+                                </ListItemButton>
+                            </Link>
                         ))}
                     </List>
                 </Box>
                 <Box>
-                    <Button color='inherit' sx={{ height: '4em' }}>Login</Button>
+                    <Link to={`/${logi()}`} style={{ textDecoration: 'none', color: '#fff', fontSize: '32px' }}> <Button color='inherit' sx={{ height: '4em' }}>{logi().charAt(0).toUpperCase() + logi().slice(1)}</Button></Link>
                 </Box>
             </Toolbar>
         </AppBar >
