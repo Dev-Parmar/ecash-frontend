@@ -29,6 +29,10 @@ const Navbar = () => {
         {
             text: 'Profile',
             path: '/profile'
+        },
+        {
+            text: 'SignUp',
+            path: '/signup'
         }
     ]
 
