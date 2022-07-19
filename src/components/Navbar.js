@@ -8,7 +8,9 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import { Typography } from '@mui/material';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+
+
 
 const Navbar = () => {
 
@@ -29,21 +31,23 @@ const Navbar = () => {
         {
             text: 'Profile',
             path: '/profile'
-        },
-        {
-            text: 'SignUp',
-            path: '/signup'
         }
     ]
 
 
     const location = useLocation()
+    const navigate = useNavigate()
+    let auth = localStorage.getItem('user')
 
-    const logi = () => {
-        let l = location.pathname
-        l = '/login' ? 'logout' : 'login'
-        return l
+
+    const lgot = (x) => {
+        if (x === 'logout') {
+            localStorage.clear()
+        } else {
+            navigate('/')
+        }
     }
+
 
 
     return (
@@ -52,6 +56,7 @@ const Navbar = () => {
             <Toolbar>
                 <Typography variant='h4' sx={{ cursor: 'pointer', paddingRight: '3rem' }}> Ecash
                 </Typography>
+
                 <Box sx={{ display: 'flex', flexGrow: 1 }}>
                     <List sx={{ display: 'flex', flexDirection: 'row' }} disablePadding>
                         {navitems.map(e => (
@@ -66,7 +71,9 @@ const Navbar = () => {
                     </List>
                 </Box>
                 <Box>
-                    <Link to={`/${logi()}`} style={{ textDecoration: 'none', color: '#fff', fontSize: '32px' }}> <Button color='inherit' sx={{ height: '4em' }}>{logi().charAt(0).toUpperCase() + logi().slice(1)}</Button></Link>
+                    <Link to={'/signup'} style={{ textDecoration: 'none', color: '#fff', fontSize: '32px' }}>
+                        <Button onClick={auth ? () => lgot('logout') : () => lgot('login')} color='inherit' sx={{ height: '4em' }}>{auth ? 'Logout' : 'Login'}</Button>
+                    </Link>
                 </Box>
             </Toolbar>
         </AppBar >

@@ -30,8 +30,6 @@ const SignUp = () => {
 
 
         if (name && email && password) {
-            console.log("go")
-
 
             let data = await fetch('http://127.0.0.1:6969/register', {
                 method: 'post',
@@ -42,10 +40,13 @@ const SignUp = () => {
             })
             let final = await data.json()
             if (final) {
+                localStorage.setItem("user", JSON.stringify(final))
                 navigate('/')
             } else {
                 console.log('Error signing up')
             }
+
+
         } else {
             console.log('Please fill the fields')
         }
