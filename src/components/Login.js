@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button, Container, Grid, TextField, Typography } from '@mui/material'
 import { Link, useNavigate } from 'react-router-dom'
 
 const Login = () => {
-
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -11,6 +10,12 @@ const Login = () => {
     const [emailErr, setEmailErr] = useState(false)
     const [passwordErr, setPasswordErr] = useState(false)
 
+    useEffect(() => {
+        let auth = localStorage.getItem('user')
+        if (auth) {
+            navigate('/')
+        }
+    }, [])
 
 
     const navigate = useNavigate()
@@ -28,7 +33,6 @@ const Login = () => {
         password ? setPasswordErr(false) : setPasswordErr(true)
 
         if (email && password) {
-
             let data = await fetch('http://127.0.0.1:6969/login', {
                 method: 'post',
                 body: JSON.stringify({ email, password }),
@@ -37,18 +41,14 @@ const Login = () => {
                 }
             })
             let final = await data.json()
-            if (final) {
+            if (final.name) {
                 localStorage.setItem("user", JSON.stringify(final))
                 navigate('/')
             } else {
-                console.log('Error signing up')
+                setEmailErr(true)
+                setPasswordErr(true)
             }
-
-        } else {
-            console.log('Please fill the fields')
         }
-
-
     }
 
 
@@ -59,13 +59,13 @@ const Login = () => {
                 <Typography variant='h3' sx={{ padding: '0.5em' }}>Login</Typography>
                 <Grid container direction={'column'} >
                     <Grid item >
-                        <TextField variant='outlined' error={emailErr} type={'email'} value={email} onChange={(e) => { setEmail(e.target.value); if (e.target.value === '' || e.target.value === null) { setEmailErr(true) } else { setEmailErr(false) } }} label='Email' sx={sty} required />
+                        <TextField variant='outlined' error={emailErr} helperText={emailErr ? 'Enter a valid Email' : null} type={'email'} value={email} onChange={(e) => { setEmail(e.target.value); if (e.target.value === '' || e.target.value === null) { setEmailErr(true) } else { setEmailErr(false) } }} label='Email' sx={sty} required />
                     </Grid>
                     <Grid item >
-                        <TextField variant='outlined' error={passwordErr} type={'password'} value={password} onChange={(e) => { setPassword(e.target.value); if (e.target.value === '' || e.target.value === null) { setPasswordErr(true) } else { setPasswordErr(false) } }} label='Password' sx={sty} required />
+                        <TextField variant='outlined' error={passwordErr} helperText={passwordErr ? 'Enter a valid Password' : ''} type={'password'} value={password} onChange={(e) => { setPassword(e.target.value); if (e.target.value === '' || e.target.value === null) { setPasswordErr(true) } else { setPasswordErr(false) } }} label='Password' sx={sty} required />
                     </Grid>
                     <Grid item>
-                        <Button size='large' variant='contained' onClick={handleSubmit} sx={{ margin: '1em' }}>Submit</Button>
+                        <Button size='large' variant='contained' onClick={handleSubmit} sx={{ margin: '1em' }}>Login</Button>
                     </Grid>
                     <Grid item>
                         <Typography variant='h6' sx={{ margin: '0.5em' }}>Don't have an Account! <Link to={'/signup'}>Create Here</Link></Typography>

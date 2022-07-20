@@ -1,6 +1,6 @@
 import { Button, Container, Grid, TextField, Typography } from '@mui/material'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 const SignUp = () => {
@@ -20,6 +20,14 @@ const SignUp = () => {
             width: '50%'
         })
     }
+
+
+    useEffect(() => {
+        let auth = localStorage.getItem('user')
+        if (auth) {
+            navigate('/')
+        }
+    }, [])
 
     const handleSubmit = async () => {
 
