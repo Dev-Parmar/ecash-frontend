@@ -8,7 +8,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import { Typography } from '@mui/material';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 
@@ -34,17 +34,7 @@ const Navbar = () => {
         }
     ]
 
-    const navigate = useNavigate()
     let auth = localStorage.getItem('user')
-
-
-    const lgot = (x) => {
-        if (x === 'logout') {
-            localStorage.clear()
-        } else {
-            navigate('/')
-        }
-    }
 
 
 
@@ -56,23 +46,38 @@ const Navbar = () => {
                 </Typography>
 
                 <Box sx={{ display: 'flex', flexGrow: 1 }}>
-                    <List sx={{ display: 'flex', flexDirection: 'row' }} disablePadding>
-                        {navitems.map(e => (
-                            <Link to={e.path} key={e.text} style={{ textDecoration: 'none', color: '#fff' }}>
-                                <ListItemButton >
-                                    <ListItem >
-                                        <ListItemText primary={e.text} />
-                                    </ListItem>
-                                </ListItemButton>
-                            </Link>
-                        ))}
-                    </List>
+                    {auth ?
+                        <List sx={{ display: 'flex', flexDirection: 'row' }} disablePadding>
+                            {navitems.map(e => (
+                                <Link to={e.path} key={e.text} style={{ textDecoration: 'none', color: '#fff' }}>
+                                    <ListItemButton >
+                                        <ListItem >
+                                            <ListItemText primary={e.text} />
+                                        </ListItem>
+                                    </ListItemButton>
+                                </Link>
+                            ))}
+                        </List>
+                        :
+                        null
+                    }
                 </Box>
-                <Box>
-                    <Link to={'/login'} style={{ textDecoration: 'none', color: '#fff', fontSize: '32px' }}>
-                        <Button onClick={auth ? () => lgot('logout') : () => lgot('login')} color='inherit' sx={{ height: '4em' }}>{auth ? 'Logout' : 'Login'}</Button>
-                    </Link>
-                </Box>
+                {auth ?
+                    <Box sx={{ display: 'flex' }}>
+                        <Link to={'/login'} style={{ textDecoration: 'none', color: '#fff', fontSize: '32px' }}>
+                            <Button onClick={() => localStorage.clear()} color='inherit' sx={{ height: '4em', px: '2em' }}>Logout ({JSON.parse(auth).name})</Button>
+                        </Link>
+                    </Box>
+                    :
+                    <Box>
+                        <Link to={'/signup'} style={{ textDecoration: 'none', color: '#fff', fontSize: '32px' }}>
+                            <Button color='inherit' sx={{ height: '4em', px: '2em' }}>Sign Up</Button>
+                        </Link>
+                        <Link to={'/login'} style={{ textDecoration: 'none', color: '#fff', fontSize: '32px' }}>
+                            <Button color='inherit' sx={{ height: '4em', px: '2em' }}>Login</Button>
+                        </Link>
+                    </Box>
+                }
             </Toolbar>
         </AppBar >
     )

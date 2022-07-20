@@ -68,7 +68,7 @@ const Login = () => {
                         <Button size='large' variant='contained' onClick={handleSubmit} sx={{ margin: '1em' }}>Login</Button>
                     </Grid>
                     <Grid item>
-                        <Typography variant='h6' sx={{ margin: '0.5em' }}>Don't have an Account! <Link to={'/signup'}>Create Here</Link></Typography>
+                        <Typography variant='h6' sx={{ margin: '0.5em' }}>Don't have an Account! <Link to={'/signup'}>Sign Up Here</Link></Typography>
                     </Grid>
                 </Grid>
             </form >
