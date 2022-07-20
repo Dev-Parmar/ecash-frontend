@@ -8,7 +8,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import { Typography } from '@mui/material';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 
@@ -34,8 +34,6 @@ const Navbar = () => {
         }
     ]
 
-
-    const location = useLocation()
     const navigate = useNavigate()
     let auth = localStorage.getItem('user')
 
@@ -71,7 +69,7 @@ const Navbar = () => {
                     </List>
                 </Box>
                 <Box>
-                    <Link to={'/signup'} style={{ textDecoration: 'none', color: '#fff', fontSize: '32px' }}>
+                    <Link to={'/login'} style={{ textDecoration: 'none', color: '#fff', fontSize: '32px' }}>
                         <Button onClick={auth ? () => lgot('logout') : () => lgot('login')} color='inherit' sx={{ height: '4em' }}>{auth ? 'Logout' : 'Login'}</Button>
                     </Link>
                 </Box>

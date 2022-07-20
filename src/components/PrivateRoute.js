@@ -6,7 +6,7 @@ const PrivateRoute = () => {
 
     let auth = localStorage.getItem('user')
 
-    return (auth ? <Outlet /> : <Navigate to={'/signup'} />)
+    return (auth ? <Outlet /> : <Navigate to={'/login'} />)
 }
 
 export default PrivateRoute
