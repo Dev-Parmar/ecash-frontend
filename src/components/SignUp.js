@@ -21,7 +21,6 @@ const SignUp = () => {
         })
     }
 
-
     useEffect(() => {
         let auth = localStorage.getItem('user')
         if (auth) {
@@ -83,8 +82,6 @@ const SignUp = () => {
                 </Grid>
             </form >
         </Container>
-
-
     )
 }
 
