@@ -4,7 +4,7 @@ import React from 'react'
 
 function Footer() {
     return (
-        <AppBar position='fixed' sx={{ bottom: 0, top: 'auto', textAlign: 'center' }}>
+        <AppBar component={'footer'} position='fixed' sx={{ bottom: 0, top: 'auto', textAlign: 'center' }}>
             <Toolbar sx={{ textAlign: 'center' }}>
                 <Typography variant='h4'>Ecash</Typography>
             </Toolbar>
