@@ -48,7 +48,7 @@ const Products = () => {
                                     <TableCell>{e.name}</TableCell>
                                     <TableCell>{e.price}</TableCell>
                                     <TableCell>{e.company}</TableCell>
-                                    <TableCell width={50} onClick={() => deleteItem(e._id)}><IconButton><DeleteOutlineIcon sx={{ cursor: 'pointer' }} /></IconButton></TableCell>
+                                    <TableCell width={50} onClick={() => deleteItem(e._id)}><IconButton color='error'><DeleteOutlineIcon color='error' size='large' sx={{ cursor: 'pointer' }} /></IconButton></TableCell>
                                 </TableRow>
                             )
                         })}
