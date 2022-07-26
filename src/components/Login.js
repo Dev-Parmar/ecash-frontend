@@ -41,8 +41,9 @@ const Login = () => {
                 }
             })
             let final = await data.json()
-            if (final.name) {
-                localStorage.setItem("user", JSON.stringify(final))
+            if (final.auth) {
+                localStorage.setItem("user", JSON.stringify(final.user))
+                localStorage.setItem("token", JSON.stringify(final.auth))
                 navigate('/')
             } else {
                 setEmailErr(true)

@@ -45,8 +45,9 @@ const SignUp = () => {
                 }
             })
             let final = await data.json()
-            if (final) {
-                localStorage.setItem("user", JSON.stringify(final))
+            if (final.auth) {
+                localStorage.setItem("user", JSON.stringify(final.data))
+                localStorage.setItem("token", JSON.stringify(final.auth))
                 navigate('/')
             } else {
                 console.log('Error signing up')

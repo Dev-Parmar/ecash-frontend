@@ -7,11 +7,15 @@ const Products = () => {
 
     useEffect(() => {
         getProducts()
-    })
+    }, [])
 
 
     const getProducts = async () => {
-        let data = await fetch('http://127.0.0.1:6969/products')
+        let data = await fetch('http://127.0.0.1:6969/products', {
+            headers: {
+                "Authorization": localStorage.getItem('token')
+            }
+        })
         let result = await data.json()
         setProducts(result)
     }
@@ -22,6 +26,7 @@ const Products = () => {
         })
         let result = await data.json()
         if (result.deletedCount) {
+            getProducts()
             alert('Deleted')
         } else {
             alert('Error deleting')

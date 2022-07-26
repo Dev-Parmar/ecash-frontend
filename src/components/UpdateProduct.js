@@ -82,6 +82,7 @@ const UpdateProduct = () => {
         })
         let result = await data.json()
         if (result.modifiedCount) {
+            setOpen(false)
             searchProduct()
             alert('Updated')
         }
