@@ -26,10 +26,6 @@ const Navbar = () => {
         {
             text: 'Update Product',
             path: '/update'
-        },
-        {
-            text: 'Profile',
-            path: '/profile'
         }
     ]
 

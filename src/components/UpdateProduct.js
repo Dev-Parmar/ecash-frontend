@@ -25,7 +25,10 @@ const UpdateProduct = () => {
             setErr(true)
         } else {
             let data = await fetch('http://127.0.0.1:6969/search/' + key, {
-                method: "POST"
+                method: "POST",
+                headers: {
+                    "Authorization": `bearer ${JSON.parse(localStorage.getItem('token'))}`
+                }
             })
             let result = await data.json()
             if (result.result) {
@@ -40,7 +43,10 @@ const UpdateProduct = () => {
 
     const deleteItem = async (pid) => {
         let data = await fetch('http://127.0.0.1:6969/product/' + pid, {
-            method: "DELETE"
+            method: "DELETE",
+            headers: {
+                "Authorization": `bearer ${JSON.parse(localStorage.getItem('token'))}`
+            }
         })
         let result = await data.json()
         if (result.deletedCount) {
@@ -59,7 +65,11 @@ const UpdateProduct = () => {
 
     const showEditForm = async (id) => {
         let data = await fetch('http://127.0.0.1:6969/search-id/' + id, {
-            method: "POST"
+            method: "POST",
+            headers: {
+                "Authorization": `bearer ${JSON.parse(localStorage.getItem('token'))}`
+            }
+
         })
         let result = await data.json()
         if (result.result) {
@@ -77,7 +87,10 @@ const UpdateProduct = () => {
             method: "POST",
             body: JSON.stringify({ name, price, company }),
             headers: {
-                "Content-type": "application/json"
+                "Content-type": "application/json",
+
+                "Authorization": `bearer ${JSON.parse(localStorage.getItem('token'))}`
+
             }
         })
         let result = await data.json()

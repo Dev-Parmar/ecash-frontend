@@ -41,7 +41,8 @@ const SignUp = () => {
                 method: 'post',
                 body: JSON.stringify({ name, email, password }),
                 headers: {
-                    "Content-type": "application/json"
+                    "Content-type": "application/json",
+                    "Authorization": `bearer ${JSON.parse(localStorage.getItem('token'))}`
                 }
             })
             let final = await data.json()

@@ -21,11 +21,11 @@ export default function App() {
                     <Route path='/' element={<Products />} />
                     <Route path='/add' element={<AddProduct />} />
                     <Route path='/update' element={<UpdateProduct />} />
-                    <Route path='/profile' element={<h1>Profile</h1>} />
 
                 </Route>
                 <Route path='/login' element={<Login />} />
                 <Route path='/signup' element={<SignUp />} />
+                <Route path="*" element={<h2>Page Not Found</h2>} />
             </Routes>
             <Box sx={{ marginBottom: '7em' }} />
             <Footer />
