@@ -9,6 +9,10 @@ A CRUD application built using MERN stack. Users can signup and play with the pr
 * RestFul APIs
 * MaterialUI
 
+
+### This project is still under production and will soon get updates.
+
+
 ## Live Example of Adding and Deleting a product...
 
 
@@ -19,6 +23,3 @@ https://user-images.githubusercontent.com/81576161/191149402-93c26cfc-6ba9-4ca3-
 
 
 https://user-images.githubusercontent.com/81576161/191149653-a27ff940-8923-4199-a546-d2dc603de446.mp4
-
-
-### This project is still under construction with more user-friendly UI and better and easier things to play with.
