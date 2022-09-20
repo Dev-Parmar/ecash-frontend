@@ -10,7 +10,7 @@ A CRUD application built using MERN stack. Users can signup and play with the pr
 * MaterialUI
 
 
-### This project is still under production and will soon get updates.
+### This project is still under production and will get updates soon.
 
 
 ## Live Example of Adding and Deleting a product...
