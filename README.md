@@ -9,7 +9,9 @@ A CRUD application built using MERN stack. Users can signup and play with the pr
 * RestFul APIs
 * MaterialUI
 
-# How to install
+# How to install 
+* Download the E-cash backend code
+* Run the code using 'nodemon' or 'node index.js'
 * Download the code
 * npm install
 * npm start
