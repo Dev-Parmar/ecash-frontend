@@ -9,6 +9,11 @@ A CRUD application built using MERN stack. Users can signup and play with the pr
 * RestFul APIs
 * MaterialUI
 
+# How to install
+* Download the code
+* npm install
+* npm start
+
 
 ### This project is still under production and will get updates soon.
 
